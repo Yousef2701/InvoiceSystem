@@ -8,6 +8,8 @@
 
         public Task<bool> CheckInvoiceAsync(int No);
 
+        public Task<bool> CheckInvoiceProductAsync(int invoiceNo, string product);
+
         public Task<bool> CheckCompanyLogInAsync(CompanyLogInVM model);
     }
 }

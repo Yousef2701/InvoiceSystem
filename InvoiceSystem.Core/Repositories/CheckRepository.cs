@@ -19,9 +19,9 @@
 
         public async Task<bool> CheckCustomerAsync(string phone)
         {
-            if(phone == null)
+            if(phone != null)
             {
-                var customer = _context.Customer.Find(phone);
+                var customer = _context.Customer.Where(m => m.Phone == phone).FirstOrDefault();
                 if (customer != null)
                     return true;
             }
@@ -51,9 +51,26 @@
         {
             if(No != null)
             {
-                var invoice = _context.Invoice.Find(No);
+                var invoice = _context.Invoice.Where(m => m.InvoiceNo == No).FirstOrDefault();
                 if (invoice != null)
                     return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Check Invoice Product Async
+
+        public async Task<bool> CheckInvoiceProductAsync(int invoiceNo, string product)
+        {
+            if(invoiceNo != null &&  product != null)
+            {
+                if(await CheckInvoiceAsync(invoiceNo))
+                {
+                    var check = _context.InvoiceProduct.Where(m => m.InvoiceNo == invoiceNo && m.ProductName == product).FirstOrDefault();
+                    if (check != null) return true;
+                }
             }
             return false;
         }

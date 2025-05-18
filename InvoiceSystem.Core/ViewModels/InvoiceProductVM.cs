@@ -1,8 +1,10 @@
-﻿namespace InvoiceSystem.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace InvoiceSystem.Core.ViewModels
 {
-    public class InvoiceProduct
+    public class InvoiceProductVM
     {
-        [ForeignKey("Invoice"), DisplayName("رقم الفاتورة"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required, DisplayName("رقم الفاتورة")]
         public int InvoiceNo { get; set; }
 
         [Required, MinLength(2), MaxLength(65), DisplayName("اسم الشركة")]
@@ -14,9 +16,5 @@
         [Required, DisplayName("عدد القطع")]
         public int count { get; set; }
 
-        [Required, DisplayName("السعر الاجمالى")]
-        public double TotalPrice { get; set; }
-
-        public virtual Invoice Invoice { get; set; } = null!;
     }
 }

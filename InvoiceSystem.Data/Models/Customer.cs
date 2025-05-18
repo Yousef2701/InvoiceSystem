@@ -15,10 +15,10 @@
         public string NameInEnglish { get; set; }
 
         [Required, MinLength(3), MaxLength(65), DisplayName("العنوان")]
-        public int AddressInArabic { get; set; }
+        public string AddressInArabic { get; set; }
 
         [Required, MinLength(3), MaxLength(65), DisplayName("Address")]
-        public int AddressInEnglish { get; set; }
+        public string AddressInEnglish { get; set; }
 
         [Required, MinLength(5), MaxLength(15), DisplayName("الرقم الضريبي للعميل")]
         public int CustomerVatNo { get; set; }

@@ -6,10 +6,10 @@
         public int InvoiceNo { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         [Required]
-        public DateTime Time { get; set; }
+        public string Time { get; set; }
 
         [Required, ForeignKey("Company"), StringLength(15), DisplayName("الرقم الضريبي للشركة")]
         public string CompanyVatNo { get; set; }
